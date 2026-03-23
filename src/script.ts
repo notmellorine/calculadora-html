@@ -1,5 +1,6 @@
 const buttons: NodeListOf<HTMLButtonElement> = document.querySelectorAll('button');
 let visorElement = document.getElementById('visor');
+console.log(buttons)
 
 buttons.forEach(button => {
     button.addEventListener('click', (event: MouseEvent) =>{
@@ -9,6 +10,8 @@ buttons.forEach(button => {
             limpar();
         } else if(ClickedButton.id === 'btn-apagar') {
             apagar();
+        } else if(ClickedButton.id === 'btn-igual'){
+            calcular();
         } else{
             const buttonText: string = (ClickedButton.textContent || ClickedButton.innerText).trim();
             exib(buttonText);
@@ -40,5 +43,13 @@ function apagar() {
         } else {
             visorElement.innerText =  conteudo.substring(0, conteudo.length -1);
         }
+    }
+}
+
+function calcular() {
+    let total = 0;
+    if(visorElement) {
+        let total = eval(visorElement.innerText);
+        visorElement.innerText = total;
     }
 }

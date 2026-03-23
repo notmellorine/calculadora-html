@@ -1,16 +1,20 @@
-const buttons = document.querySelectorAll('button');
-let visorElement = document.getElementById('visor');
-buttons.forEach(button => {
-    button.addEventListener('click', (event) => {
-        const ClickedButton = event.currentTarget;
+var buttons = document.querySelectorAll('button');
+var visorElement = document.getElementById('visor');
+console.log(buttons);
+buttons.forEach(function (button) {
+    button.addEventListener('click', function (event) {
+        var ClickedButton = event.currentTarget;
         if (ClickedButton.id === 'btn-limpar') {
             limpar();
         }
         else if (ClickedButton.id === 'btn-apagar') {
             apagar();
         }
+        else if (ClickedButton.id === 'btn-igual') {
+            calcular();
+        }
         else {
-            const buttonText = (ClickedButton.textContent || ClickedButton.innerText).trim();
+            var buttonText = (ClickedButton.textContent || ClickedButton.innerText).trim();
             exib(buttonText);
         }
     });
@@ -41,5 +45,14 @@ function apagar() {
         }
     }
 }
+
+function calcular() {
+    var total = 0;
+    if (visorElement) {
+        var total_1 = eval(visorElement.innerText);
+        visorElement.innerText = total_1;
+    }
+}
+
 export {};
 //# sourceMappingURL=script.js.map
